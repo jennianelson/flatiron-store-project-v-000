@@ -1,7 +1,12 @@
+<h3>Categories:</h3>
 <% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
+  | <%= link_to category.title, category_path(category) %> |
 <% end %>
+ <br> <br>
 
+<h3>Items for Sale:</h3>
 <% @items.each do |item| %>
-  <p><%= item.title %> | <%= number_to_currency(item.price) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
+
+<%= render partial: 'store/list_items', locals: {item: item} %>
+
 <% end %>

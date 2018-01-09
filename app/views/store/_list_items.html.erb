@@ -1,0 +1,9 @@
+
+<%= link_to item.title, item_path(item) %> | $<%= format_price(item) %> | Quantity: <%= item.inventory %>
+
+<% if user_signed_in? %>
+    <%= form_tag line_items_path(item_id: item) do %>
+        <%= hidden_field_tag 'item_id', item.id %>
+        <%= submit_tag "Add to Cart" %>
+    <% end %>
+<% end %>
